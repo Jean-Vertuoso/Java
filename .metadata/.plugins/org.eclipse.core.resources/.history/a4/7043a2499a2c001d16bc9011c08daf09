@@ -1,0 +1,96 @@
+import java.util.Scanner;
+
+public class CalcIMC {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		double altura;
+		double peso;
+		char opcao = 'S';
+		
+		while (opcao == 'S' || opcao == 's') {
+			Scanner tc = new Scanner(System.in);
+			
+			System.out.print("Digite sua altura: ");
+			altura = tc.nextDouble();	
+			
+			System.out.print("Digite seu peso: ");
+			peso = tc.nextDouble();
+			
+			System.out.print("Deseja reiniciar o programa? S/N: ");
+			opcao = vaiContinuar();
+		}
+		
+
+	}
+
+	public static String verifConsAlt(double altura, double peso) {
+		
+		  /*16 a 16,9 kg/m² - Muito abaixo do peso
+			17 a 18,4 kg/m² - Abaixo do peso
+			18,5 a 24,9 kg/m² - Peso normal
+			25 a 29,9 kg/m² - Acima do peso
+			30 a 34,9 kg/m² - Obesidade grau I
+			35 a 40 kg/m² - Obesidade grau II
+			maior que 40 kg/m² - Obesidade grau III...
+			
+			IMC = Peso ÷ (Altura × Altura)*/
+		
+		double imc = peso / (altura * altura);
+		
+		String mensagem = "";
+		
+		
+		if (imc < 17) {
+			
+			System.out.print("Está muito abaixo do peso.");
+			
+			}else if(imc >= 17 && imc < 18.5) {				
+				System.out.print("Está abaixo do peso.");		
+				
+				}else if(imc >= 18.5 && imc < 25) {				
+					System.out.print("Está no peso normal.");
+					
+					}else if(imc >= 25 && imc < 30) {				
+						System.out.print("Está acima do peso.");
+						
+						}else if(imc >= 30 && imc < 35) {				
+							System.out.print("Está com obesidade grau I.");
+							
+							}else if(imc >= 35 && imc < 40) {				
+								System.out.print("Está com obesidade grau II.");
+								
+								}else{				
+									System.out.print("Está com obesidade grau III.");
+								}
+		
+		return mensagem;
+		
+	}
+	
+	public static boolean vaiContinuar(char opcao) {
+		
+		boolean goContinue = true;
+		boolean isOpValida = false;
+		
+		while(!isOpValida) {
+		
+		if (opcao == 'S' || opcao == 's') {
+			goContinue = true;
+			isOpValida = true;
+			
+			}else if(opcao == 'N' || opcao == 'n') {
+				System.out.println("Programa encerrado.");
+				goContinue = false;
+				isOpValida = true;
+				
+				}else{
+					isOpValida = false;
+					
+					
+				}
+		}
+		return goContinue;
+	}
+}

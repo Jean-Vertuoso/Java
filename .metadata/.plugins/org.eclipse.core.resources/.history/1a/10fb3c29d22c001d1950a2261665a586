@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class PesoIdeal {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner tc = new Scanner(System.in);
+		
+		double height;
+		char gender;
+
+		System.out.println("Digite sua altura: ");
+		height = tc.nextDouble();
+		
+		System.out.println("Qual seu sexo: ");
+		System.out.println("M - Masculino");
+		System.out.println("F - Feminino");
+		gender = tc.next().charAt(0);
+		
+	}
+
+}

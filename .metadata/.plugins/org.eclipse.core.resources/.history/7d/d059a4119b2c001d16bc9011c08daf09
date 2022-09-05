@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+public class CalcIMC {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		double altura;
+		double peso;
+		char opcao = 'S';
+		
+		while (opcao == 'S' || opcao == 's') {
+			Scanner tc = new Scanner(System.in);
+			
+			System.out.print("Digite sua altura: ");
+			altura = tc.nextDouble();	
+			
+			System.out.print("Digite seu peso: ");
+			peso = tc.nextDouble();
+		}
+		
+
+	}
+
+	public static String verifConsAlt(double altura, double peso) {
+		
+		double imc = peso / (altura * altura);
+		
+		String mensagem = "";
+		
+		
+		if (imc < 17) {
+			
+			System.out.print("Está muito abaixo do peso.");
+			
+			}else if(imc >= 17 && imc < 18.5) {				
+				System.out.print("Está abaixo do peso.");		
+				
+				}else if(imc >= 18.5 && imc < 25) {				
+					System.out.print("Está no peso normal.");
+					
+					}else if(imc >= 25 && imc < 30) {				
+						System.out.print("Está acima do peso.");
+						
+						}else if(imc >= 30 && imc < 35) {				
+							System.out.print("Está com obesidade grau I.");
+							
+							}else if(imc >= 35 && imc < 40) {				
+								System.out.print("Está com obesidade grau II.");
+								
+								}else{				
+									System.out.print("Está com obesidade grau III.");
+								}
+		
+		return mensagem;
+		
+	}
+	
+	public static boolean vaiContinuar(Scanner tc) {
+		
+		boolean goContinue = true;
+		boolean isOpValida = false;
+		char opcao = 'S';
+		
+		while(!isOpValida) {
+
+			System.out.print("Deseja reiniciar o programa? S/N: ");
+			opcao = tc.next().charAt(0);
+		
+		if (opcao == 'S' || opcao == 's') {
+			goContinue = true;
+			isOpValida = true;
+			
+			}else if(opcao == 'N' || opcao == 'n') {
+				System.out.println("Programa encerrado.");
+				goContinue = false;
+				isOpValida = true;
+				
+				}else{
+					isOpValida = false;
+					System.out.println("\nOpção inválida. ");
+					System.out.print("Deseja continuar? S/N: ");
+					opcao = tc.next().charAt(0);					
+				}
+		}
+		return goContinue;
+	}
+}

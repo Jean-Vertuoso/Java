@@ -1,0 +1,100 @@
+import java.util.Scanner;
+
+public class CalcularMedia {
+
+// ---------------------------------------------------------------------------------------  Método Principal ------------------------------------------------------------------------------------\\
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner tc = new Scanner(System.in);
+		
+		do {
+			calcSumAndAvr(tc);
+		}while (addNewNote(tc));
+			
+	}
+	
+	public static void calcSumAndAvr(Scanner tc) {
+	
+		double nota;		
+		double somaNotas = 0;
+		double media = 0;
+		boolean isNotaValida = true;
+		byte cont = 0;
+		
+		while (addNewNote(tc)) {
+			
+			System.out.print("Digite a nota: ");
+			nota = tc.nextDouble();
+		
+			while(isNotaValida) {
+				
+				if(nota >= 0 && nota <= 10) {
+					somaNotas = somaNotas + nota;
+					isNotaValida = true;
+				}else {
+					isNotaValida = false;
+					System.out.print("Nota inválida, digite novamente: ");
+				}
+		}
+			media = somaNotas / cont;
+		}
+		System.out.println("\nMédia:"+ media);
+		System.out.println("\nPrograma encerrado.");
+	}
+		
+	/*	do {
+			cont++;
+					
+			do {
+				
+				System.out.print("Digite a nota: ");
+				nota = tc.nextDouble();
+				
+				if(nota >= 0 && nota <= 10) {
+					somaNotas = somaNotas + nota;
+					isNotaValida = true;
+				}else {
+					isNotaValida = false;
+					System.out.print("Nota inválida, digite novamente: ");
+					nota = tc.nextDouble();
+				}
+			}while(isNotaValida);
+			media = somaNotas / cont;
+		}while(addNewNote(tc));
+		System.out.println("\nMédia:"+ media);
+		System.out.println("\nPrograma encerrado.");
+	}*/
+	
+	public static boolean addNewNote(Scanner tc) {
+		
+		boolean goContinue = true;
+		boolean isInvalido = true;
+		char opcao = 's';
+		
+		System.out.println("1 - Adicionar nova nota: ");
+		System.out.println("2 - Sair do programa: ");
+		System.out.print("Opção: ");
+		opcao = tc.next().charAt(0);		
+		
+		while(isInvalido) {
+		
+			if(opcao == '1') {
+				goContinue = true;
+				isInvalido = false;
+				
+				}else if(opcao == '2' || opcao == '2'){
+					goContinue = false;
+					isInvalido = false;
+					
+					}else {
+						isInvalido = true;
+						System.out.print("\nOpção Inválida.");
+						System.out.print("\nDeseja continuar? S/N: ");
+						opcao = tc.next().charAt(0);					
+				}
+		
+		}		
+		return goContinue;
+	}
+}

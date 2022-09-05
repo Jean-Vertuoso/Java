@@ -1,0 +1,104 @@
+import java.util.Scanner;
+
+public class CalcularMedia {
+
+// ---------------------------------------------------------------------------------------  Método Principal ------------------------------------------------------------------------------------\\
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner tc = new Scanner(System.in);
+		
+		double nota;		
+		double somaNotas = 0;
+		double media = 0;
+		boolean isNotaValida = true;
+		byte cont = 0;
+		
+		do{
+			
+			cont++;
+			
+			System.out.print("Digite a nota: ");
+			nota = tc.nextDouble();
+				
+				if(nota >= 0 && nota <= 10) {
+					somaNotas = somaNotas + nota;
+					System.out.println("Nota adicionada. ");
+					isNotaValida = true;
+				}else {
+					isNotaValida = false;
+					System.out.println("\nNota inválida. Adicione uma nota válida ou calcule a média e encerre o programa.");
+				}
+		}while(addNewNote(tc));
+
+		media = somaNotas / cont;
+		System.out.println("\nMédia:"+ media);
+		System.out.println("\nPrograma encerrado.");
+	}
+	
+	/*public static void calcSumAndAvr(Scanner tc) {
+	
+		double nota;		
+		double somaNotas = 0;
+		double media = 0;
+		boolean isNotaValida = true;
+		byte cont = 0;
+		
+		do{
+			
+			cont++;
+			
+			System.out.print("Digite a nota: ");
+			nota = tc.nextDouble();
+				
+				if(nota >= 0 && nota <= 10) {
+					somaNotas = somaNotas + nota;
+					System.out.println("Nota adicionada. ");
+					isNotaValida = true;
+				}else {
+					isNotaValida = false;
+					System.out.println("\nNota inválida. Adicione uma nota válida ou calcule a média e encerre o programa.");
+				}
+		}while(addNewNote(tc));
+
+		media = somaNotas / cont;
+		System.out.println("\nMédia:"+ media);
+		System.out.println("\nPrograma encerrado.");
+	}*/
+	
+	public static boolean addNewNote(Scanner tc) {
+		
+		boolean goContinue = true;
+		boolean isInvalido = true;
+		char opcao = 's';
+		
+		System.out.println("\n1 - Adicionar nova nota ");
+		System.out.println("2 - Calcular e sair do programa ");
+		System.out.print("Opção: ");
+		opcao = tc.next().charAt(0);
+		System.out.println("");
+		
+		while(isInvalido) {
+		
+			if(opcao == '1') {
+				goContinue = true;
+				isInvalido = false;
+				
+				}else if(opcao == '2' || opcao == '2'){
+					goContinue = false;
+					isInvalido = false;
+					
+					}else {
+						isInvalido = true;
+						System.out.println("\nOpção Inválida. Deseja continuar?");
+						System.out.println("1 - Sim");
+						System.out.println("2 - Não");
+						System.out.print("Opção: ");
+						opcao = tc.next().charAt(0);
+						System.out.println("");
+				}
+		
+		}		
+		return goContinue;
+	}
+}

@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class PesoIdeal {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner tc = new Scanner(System.in);
+		
+		double height;
+		char gender;
+
+		System.out.print("Digite sua altura: ");
+		height = tc.nextDouble();
+		
+		System.out.println("Qual seu sexo: ");
+		System.out.println("M - Masculino");
+		System.out.println("F - Feminino");
+		System.out.print("Opção: ");
+		gender = tc.next().charAt(0);
+		
+		System.out.println(calcWeig(height, gender));
+		
+	}
+
+	public static String calcWeig(double height, char gender) {
+		
+		double pesoIdeal = 0;
+		String mensagem = "";
+		
+		if (gender == 'M' || gender == 'm') {			
+			pesoIdeal = (72.7*height) - 58;
+			
+			mensagem = "\nAltura:"+ height +"\nGênero: Masculino\nPeso ideal: "+ pesoIdeal;
+			
+			}else if(gender == 'F' || gender == 'f') {				
+				pesoIdeal = (62.1*height) - 44.7;
+				
+				mensagem = "Altura:"+ height + "Gênero: Feminino\nPeso ideal: "+ pesoIdeal;
+				
+				}else {
+					mensagem = "Opção Inválida. Encerrando programa...";
+				}
+		
+		return mensagem;
+	}
+}

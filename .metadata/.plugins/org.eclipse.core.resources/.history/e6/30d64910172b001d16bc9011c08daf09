@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class FormasGeometricas {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner tc = new Scanner(System.in);
+		
+		double baseRaio;
+		double altura;
+		byte opcao;
+		
+		System.out.println("Deseja calcular qual forma geométrica:");
+		System.out.println("1 - Círculo");
+		System.out.println("2 - Retângulo");
+		System.out.println("3 - Triangulo Retângulo");
+		System.out.println("4 - Triangulo Equilátero");
+		opcao = tc.nextByte();
+		
+		System.out.println("opcao escolhida" + opcao);
+
+	}
+
+}

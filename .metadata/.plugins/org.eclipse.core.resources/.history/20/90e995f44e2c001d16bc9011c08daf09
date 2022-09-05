@@ -1,0 +1,156 @@
+import java.util.Scanner;
+
+public class FormasGeometricas {
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner tc = new Scanner(System.in);
+		
+		do { 
+		
+			char opcao;
+			
+			System.out.println("\nDeseja calcular qual forma geométrica:");
+			System.out.println("1 - Círculo");
+			System.out.println("2 - Retângulo");
+			System.out.println("3 - Triangulo Retângulo");
+			System.out.println("4 - Triangulo Equilátero");
+			System.out.println(" ");
+			System.out.print("Opção: ");
+			opcao = tc.next().charAt(0);
+			
+			switch (opcao) {
+			case '1':
+				
+				System.out.println("\nResultado: "+ calcCirc(tc));
+				
+				break;
+				
+			case '2':
+				
+				System.out.println("\nResultado: "+ calcRect(tc));
+				
+				break;
+				
+			case '3':
+				
+				System.out.println("\nResultado: "+ calcRecTri(tc));
+				
+				break;
+				
+			case '4':
+				
+				System.out.println("\nResultado: "+ calcEquTri(tc));
+				
+				break;
+	
+			default:
+				System.out.println("\nOpção inválida.");
+				break;
+			}
+		
+		}while(desejaContinuar(tc));
+		
+	}
+	
+	public static double calcCirc(Scanner tc) {
+		
+		double raio;
+		double area;
+		
+		System.out.print("\nDigite o raio: ");
+		raio = tc.nextDouble();
+		
+		area = Math.PI * Math.pow(raio, 2);
+		
+		return area;
+	}
+	
+	public static double calcRect(Scanner tc) {
+	
+		double baseRaioLado;
+		double altura;
+		double area;
+		
+		System.out.print("\nDigite o tamanho da base: ");
+		baseRaioLado = tc.nextDouble();
+		
+		System.out.print("\nDigite o tamanho da altura: ");
+		altura = tc.nextDouble();
+		
+		area = baseRaioLado * altura;
+		
+		return area;
+			
+		}
+	
+	public static double calcRecTri(Scanner tc) {
+		
+		double base;
+		double altura;
+		double area;
+		
+		System.out.print("\nDigite o tamanho da base: ");
+		base = tc.nextDouble();
+		
+		System.out.print("Digite o tamanho da altura: ");
+		altura = tc.nextDouble();
+		
+		
+		area = (base * altura)/2;
+		
+		return area;
+		
+	}
+	
+	public static double calcEquTri(Scanner tc) {
+		
+		double altura;
+		double area;
+		
+		System.out.print("\nDigite o tamanho do lado: ");
+		altura = tc.nextDouble();
+		
+		area = (Math.pow(altura, 2))/Math.sqrt(3);
+		
+		return area;
+		
+	}
+	
+	public static void opcaoValida() {
+		desejaContinuar(null);
+	}
+
+	public static boolean desejaContinuar(Scanner tc) {
+		
+			char opcao = ' ';
+			boolean goContinue = true;
+			boolean isInvalido = true;
+			
+			System.out.print("Deseja continuar? S/N: ");
+			opcao = tc.next().charAt(0);
+			
+			while (isInvalido) {
+			
+				if (opcao == 'S' || opcao == 's'){
+					goContinue = true;
+					isInvalido = false;
+					
+					}else if (opcao == 'N' || opcao == 'n'){
+						goContinue = false;
+						isInvalido = false;
+						System.out.println("\nPrograma encerrado.");	
+						
+						}else{
+							isInvalido = true;
+							System.out.print("\nOpção Inválida.");
+							System.out.print("\nDeseja continuar? S/N: ");
+							opcao = tc.next().charAt(0);
+						}
+			}
+			
+		return goContinue;
+			
+	}
+}

@@ -1,0 +1,79 @@
+// ---------------------------------------------------------------------------------------  Início do código ------------------------------------------------------------------------------------\\
+
+// -----------------------------------------------------------------------------------  Importação de bibliotecas -------------------------------------------------------------------------------\\
+import java.util.Scanner;
+//----------------------------------------------------------------------------------------  Início da Classe ------------------------------------------------------------------------------------\\
+public class CalcularMedia {
+
+// ---------------------------------------------------------------------------------------  Método principal ------------------------------------------------------------------------------------\\
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner tc = new Scanner(System.in); // Instanciando objeto Scanner;
+// --------------------------------------------------------------------------------------  Declarando variáveis ---------------------------------------------------------------------------------\\	
+		double nota;		
+		double somaNotas = 0;
+		double media = 0;
+		byte cont = 0;
+// ---------------------------------------------------------------------------------------  Conteúdo da classe ---------------------------------------------------------------------------------\\	
+		do{
+			
+			System.out.print("Digite a nota: "); 			 // 1. Pedido de digitação ao usuário;
+			nota = tc.nextDouble(); 			 			 // 2. Guarda temporariamente na variável "nota" para verificação nas condições abaixo;
+				
+				if(nota >= 0 && nota <= 10) {				 // 3. Verificação do conteúdo inserido na variável "nota";
+					somaNotas = somaNotas + nota;			 // 4. Se a nota for válida, adiciona esta nota na soma;
+					System.out.println("Nota adicionada. "); // 5. Informa ao usuário que a nota foi adicionada;
+					cont++; 								 // 6. Contador do número de notas para divisão da média. Só será incrementado, caso o número da variável "nota" seja válido;
+				}else {										 // 7. Se a nota não for válida, é enviada a mensagem abaixo para o usuário, e nada é adicionado à variável "nota";
+					System.out.println("\nNota inválida. Adicione uma nota válida ou calcule a média e encerre o programa.");
+				}
+				
+		}while(addNewNote(tc));								 // 8. Todo o processo é feito enquanto a condição da função "addNewNote" for verdadeira, ou seja, enquanto o usuário quiser adicionar
+															 // uma nova nota;
+
+		media = somaNotas / cont;							 // 9. Após sair do laço acima, é calculada a média baseando-se na soma de notas dividido pelo número armazenado na variável "cont";
+		System.out.println("\nMédia:"+ media);  			 // 10. Mostra o resultado para 
+		System.out.println("\nPrograma encerrado.");		 // 11. Mensagem de encerramento do programa.
+	}
+
+// ----------------------------------------------------------------------------------  Função de controle do programa ---------------------------------------------------------------------------\\	
+	
+//----------------------------------------------------------------------------------------  Início da Classe ------------------------------------------------------------------------------------\\
+	public static boolean addNewNote(Scanner tc) {
+// --------------------------------------------------------------------------------------  Declarando variáveis ---------------------------------------------------------------------------------\\	
+		boolean goContinue = true;
+		boolean isInvalido = true;
+		char opcao = 's';
+// ---------------------------------------------------------------------------------------  Conteúdo da classe ---------------------------------------------------------------------------------\\	
+		System.out.println("\n1 - Adicionar nova nota "); 
+		System.out.println("2 - Calcular e sair do programa ");
+		System.out.print("Opção: ");
+		opcao = tc.next().charAt(0);
+		System.out.println("");
+		
+		while(isInvalido) {
+		
+			if(opcao == '1') {
+				goContinue = true;
+				isInvalido = false;
+				
+				}else if(opcao == '2' || opcao == '2'){
+					goContinue = false;
+					isInvalido = false;
+					
+					}else {
+						isInvalido = true;
+						System.out.println("\nOpção Inválida. Deseja continuar?");
+						System.out.println("1 - Sim");
+						System.out.println("2 - Não");
+						System.out.print("Opção: ");
+						opcao = tc.next().charAt(0);
+						System.out.println("");
+				}
+		
+		}		
+		return goContinue;
+	}
+}

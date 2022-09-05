@@ -1,0 +1,79 @@
+import java.util.Scanner;
+
+public class CalcularMedia {
+
+// ---------------------------------------------------------------------------------------  Método Principal ------------------------------------------------------------------------------------\\
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner tc = new Scanner(System.in);
+		
+		calcSumAndAvr(tc);
+			
+	}
+	
+	public static void calcSumAndAvr(Scanner tc) {
+	
+		double nota;		
+		double somaNotas = 0;
+		double media = 0;
+		boolean isNotaValida = true;
+		byte cont = 0;
+		
+		do {
+			cont++;
+					
+			while(isNotaValida) {
+				
+				System.out.print("Digite a nota: ");
+				nota = tc.nextDouble();
+				
+				if(nota >= 0 && nota <= 10) {
+					somaNotas = somaNotas + nota;
+					isNotaValida = true;
+				}else {
+					isNotaValida = false;
+					System.out.print("Nota inválida, digite novamente: ");
+					nota = tc.nextDouble();
+				}
+			}
+			media = somaNotas / cont;
+		}while(addNewNote(tc));
+		System.out.println("\nMédia:"+ media);
+		System.out.println("\nPrograma encerrado.");
+	}
+	
+	public static boolean addNewNote(Scanner tc) {
+		
+		boolean goContinue = true;
+		boolean isInvalido = true;
+		char opcao = 's';
+		
+		System.out.print("Deseja adicionar uma nova nota S/N?: ");
+		opcao = tc.next().charAt(0);		
+		
+		while(isInvalido) {
+		
+			if(opcao == 'S' || opcao == 's') {
+				goContinue = true;
+				isInvalido = false;
+				
+				}else if(opcao == 'N' || opcao == 'n'){
+					goContinue = false;
+					isInvalido = false;
+					
+					}else {
+						isInvalido = true;
+						System.out.print("\nOpção Inválida.");
+						System.out.print("\nDeseja continuar? S/N: ");
+						opcao = tc.next().charAt(0);					
+				}
+		
+		}		
+		return goContinue;
+	}
+	
+	public static void consistNote() {
+		
+	}
+}

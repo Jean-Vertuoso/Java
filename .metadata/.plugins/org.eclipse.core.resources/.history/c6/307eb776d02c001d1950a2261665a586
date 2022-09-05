@@ -1,0 +1,91 @@
+import java.util.Scanner;
+
+public class CalcIMC {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner tc = new Scanner(System.in);
+		
+		double altura;
+		double peso;
+		char opcao = 'S';
+		
+		while (vaiContinuar(tc)) {
+			
+			System.out.print("\nDigite sua altura: ");
+			altura = tc.nextDouble();	
+			
+			System.out.print("Digite seu peso: ");
+			peso = tc.nextDouble();
+			
+			System.out.println(verifConsAlt(altura, peso));
+		}
+		
+
+	}
+
+	public static String verifConsAlt(double altura, double peso) {
+		
+		double imc = peso / (altura * altura);
+		
+		String mensagem = "";
+		
+		
+		if (imc < 17) {
+			
+			mensagem = "\nEstá muito abaixo do peso.";
+			
+			}else if(imc >= 17 && imc < 18.5) {				
+				mensagem = "\nEstá abaixo do peso.";	
+				
+				}else if(imc >= 18.5 && imc < 25) {				
+					mensagem = "\nEstá no peso normal.";
+					
+					}else if(imc >= 25 && imc < 30) {				
+						mensagem = "\nEstá acima do peso.";
+						
+						}else if(imc >= 30 && imc < 35) {				
+							mensagem = "\nEstá com obesidade grau I.";
+							
+							}else if(imc >= 35 && imc < 40) {				
+								mensagem = "\nEstá com obesidade grau II.";
+								
+								}else{				
+									mensagem = "\nEstá com obesidade grau III.";
+								}
+		
+		return mensagem;
+		
+	}
+	
+	public static boolean vaiContinuar(Scanner tc) {
+		
+		boolean goContinue = true;
+		boolean isOpValida = false;
+		char opcao = 'S';
+		
+		while(!isOpValida) {
+
+			System.out.print("Digite 'S' para iniciar ou 'Q' para sair: ");
+			opcao = tc.next().charAt(0);
+		
+		if (opcao == 'S' || opcao == 's') {
+			goContinue = true;
+			isOpValida = true;
+			
+			}else if(opcao == 'Q' || opcao == 'q') {
+				System.out.println("Programa encerrado.");
+				goContinue = false;
+				isOpValida = true;
+				
+				}else{
+					isOpValida = false;
+					System.out.println("\nOpção inválida. ");
+					System.out.print("Deseja continuar? S/N: ");
+					opcao = tc.next().charAt(0);					
+				}
+		}
+		return goContinue;
+	}
+}

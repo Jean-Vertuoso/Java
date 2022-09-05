@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class CalculadoraSimples {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner tc = new Scanner(System.in);
+		
+		double num1;
+		double num2;
+		double result = 0;
+		String opcao = "S";
+		
+		while (opcao == "S") {
+			System.out.println("Digite o primeiro número: ");
+			num1 = tc.nextDouble();
+			
+			System.out.println("Digite o segundo número: ");
+			num2 = tc.nextDouble();
+			
+			System.out.println("Resultado: "+ result);
+			
+			System.out.print("Deseja continuar?" );
+			opcao = tc.next();
+		}
+	}
+
+}
